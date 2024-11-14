@@ -14,7 +14,7 @@ scikit-learn = 1.0.2                                                            
 The codes was tested with tensorflow 2.10.0, CUDA driver 12.7, CUDA toolkit 11.8, Ubuntu 22.04.
 
 # Quick strat
-Download the dataset from https://github.com/YKatser/CPDE/tree/master/TEP_data. Move the dataset to [data] folder. 
+
 ```
 python ACGAN-FG.py
 ```
