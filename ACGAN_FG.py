@@ -31,7 +31,7 @@ class ACGAN_FG():
         self.latent_dim = 50
         self.noise_shape=(self.latent_dim,1)
         
-        self.n_critic = 1 # range from (0,5)
+        self.n_critic = 5 # range from (0,8)
         self.LAMBDA_GP=10 # range from (0,10)
         self.num_blocks=3
                
