@@ -42,11 +42,11 @@ class ACGAN_FG():
         self.mi_weight = 0.1 # range from (0,1)
         self.mi_bound = 1.0 # range from (0.5,2)
                 
-        self.autoencoder_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001) # range from (1e-2,1e-4)
-        self.d_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001) # range from (1e-2,1e-4)
-        self.g_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001) # range from (1e-2,1e-4)       
-        self.c_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001) # range from (1e-2,1e-4)
-        self.m_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001) # range from (1e-2,1e-4)
+        self.autoencoder_optimizer = tf.keras.optimizers.Adam(learning_rate=0.0005) # range from (1e-2,1e-4)
+        self.d_optimizer = tf.keras.optimizers.Adam(learning_rate=0.0005) # range from (1e-2,1e-4)
+        self.g_optimizer = tf.keras.optimizers.Adam(learning_rate=0.0005) # range from (1e-2,1e-4)       
+        self.c_optimizer = tf.keras.optimizers.Adam(learning_rate=0.0005) # range from (1e-2,1e-4)
+        self.m_optimizer = tf.keras.optimizers.Adam(learning_rate=0.0005) # range from (1e-2,1e-4)
         
         self.autoencoder= self.build_autoencoder()
         self.d = self.build_discriminator()
@@ -490,7 +490,7 @@ class ACGAN_FG():
             elapsed_time))
       
               
-      accuracy_lsvm,accuracy_nrf,accuracy_pnb,accuracy_mlp=feature_generation_and_diagnosis(2000,testdata,test_attributelabel,model.autoencoder,model.g, model.c)              
+      accuracy_lsvm,accuracy_nrf,accuracy_pnb,accuracy_mlp=feature_generation_and_diagnosis(480,testdata,test_attributelabel,model.autoencoder,model.g, model.c)              
 
       print("[Accuracy_lsvm: %f] [Accuracy_nrf: %f] [Accuracy_pnb: %f] [Accuracy_pnb: %f]"\
           %(accuracy_lsvm,accuracy_nrf,accuracy_pnb,accuracy_mlp))                 
