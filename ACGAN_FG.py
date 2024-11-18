@@ -415,7 +415,7 @@ class ACGAN_FG():
           Noise_shape_g=(batch_size, self.latent_dim, 1)
           noise_g = tf.random.normal(shape=Noise_shape_g)
           
-          base_indices = np.random.choice(480, size=30, replace=False)
+          base_indices = np.random.choice(480, size=batch_size, replace=False)
           all_indices = base_indices[None,:] + 480 * np.arange(11)[:,None]
 
           
@@ -503,7 +503,7 @@ class ACGAN_FG():
         
 if __name__ == '__main__':
   model = ACGAN_FG()
-  model.train(epochs=1000, batch_size=30)            
+  model.train(epochs=1000, batch_size=60)            
   
             
             
