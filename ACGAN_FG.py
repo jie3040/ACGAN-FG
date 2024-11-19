@@ -39,14 +39,14 @@ class ACGAN_FG():
         self.lambda_cms = 10 # range from (5,15)
         self.lambda_crl = 1 # range from (1,15)
         
-        self.mi_weight = 0.1 # range from (0,1)
+        self.mi_weight = 0.001 # range from (0,1)
         self.mi_bound = 1.0 # range from (0.5,2)
                 
-        self.autoencoder_optimizer = tf.keras.optimizers.Adam(learning_rate=0.0005) # range from (1e-2,1e-4)
-        self.d_optimizer = tf.keras.optimizers.Adam(learning_rate=0.0005) # range from (1e-2,1e-4)
-        self.g_optimizer = tf.keras.optimizers.Adam(learning_rate=0.0005) # range from (1e-2,1e-4)       
-        self.c_optimizer = tf.keras.optimizers.Adam(learning_rate=0.0005) # range from (1e-2,1e-4)
-        self.m_optimizer = tf.keras.optimizers.Adam(learning_rate=0.0005) # range from (1e-2,1e-4)
+        self.autoencoder_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001) # range from (1e-2,1e-4)
+        self.d_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001) # range from (1e-2,1e-4)
+        self.g_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001) # range from (1e-2,1e-4)       
+        self.c_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001) # range from (1e-2,1e-4)
+        self.m_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001) # range from (1e-2,1e-4)
         
         self.autoencoder= self.build_autoencoder()
         self.d = self.build_discriminator()
