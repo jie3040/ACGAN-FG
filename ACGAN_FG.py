@@ -490,7 +490,7 @@ class ACGAN_FG():
             elapsed_time))
       
               
-      accuracy_lsvm,accuracy_nrf,accuracy_pnb,accuracy_mlp=feature_generation_and_diagnosis(480,testdata,test_attributelabel,model.autoencoder,model.g, model.c)              
+      accuracy_lsvm,accuracy_nrf,accuracy_pnb,accuracy_mlp=feature_generation_and_diagnosis(2000,testdata,test_attributelabel,model.autoencoder,model.g, model.c)              
 
       print("[Accuracy_lsvm: %f] [Accuracy_nrf: %f] [Accuracy_pnb: %f] [Accuracy_pnb: %f]"\
           %(accuracy_lsvm,accuracy_nrf,accuracy_pnb,accuracy_mlp))                 
