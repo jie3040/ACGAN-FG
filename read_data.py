@@ -49,7 +49,23 @@ def creat_dataset(test_index = [1, 6, 14]):
     fault13 = read_dat_file(path + 'd13.dat')
     fault14 = read_dat_file(path + 'd14.dat')
     fault15 = read_dat_file(path + 'd15.dat')
-    
+
+    fault1_te = read_dat_file(path + 'd01_te.dat')
+    fault2_te = read_dat_file(path + 'd02_te.dat')
+    fault3_te = read_dat_file(path + 'd03_te.dat')
+    fault4_te = read_dat_file(path + 'd04_te.dat')
+    fault5_te = read_dat_file(path + 'd05_te.dat')
+    fault6_te = read_dat_file(path + 'd06_te.dat')
+    fault7_te = read_dat_file(path + 'd07_te.dat')
+    fault8_te = read_dat_file(path + 'd08_te.dat')
+    fault9_te = read_dat_file(path + 'd09_te.dat')
+    fault10_te = read_dat_file(path + 'd10_te.dat')
+    fault11_te = read_dat_file(path + 'd11_te.dat')
+    fault12_te = read_dat_file(path + 'd12_te.dat')
+    fault13_te = read_dat_file(path + 'd13_te.dat')
+    fault14_te = read_dat_file(path + 'd14_te.dat')
+    fault15_te = read_dat_file(path + 'd15_te.dat')
+   
     attribute_matrix_ = pd.read_excel('/home/liaowenjie/myfolder/GAN_for_UFD_3/re_imple/attribute_matrix.xlsx', index_col='no')
     attribute_matrix = attribute_matrix_.values
     
@@ -64,7 +80,10 @@ def creat_dataset(test_index = [1, 6, 14]):
     data_list = [fault1, fault2, fault3, fault4, fault5,
                  fault6, fault7, fault8, fault9, fault10,
                  fault11, fault12, fault13, fault14, fault15]
-    
+    data_te_list = [fault1_te, fault2_te, fault3_te, fault4_te, fault5_te,
+                 fault6_te, fault7_te, fault8_te, fault9_te, fault10_te,
+                 fault11_te, fault12_te, fault13_te, fault14_te, fault15_te]
+   
     trainlabel = []
     train_attributelabel = []
     traindata = []
@@ -80,9 +99,9 @@ def creat_dataset(test_index = [1, 6, 14]):
     test_attributelabel = []
     testdata = []
     for item in test_index:
-        testlabel += [item] * 480
-        test_attributelabel += [attribute_matrix[item, :]] * 480
-        testdata.append(data_list[item])
+        testlabel += [item] * 960
+        test_attributelabel += [attribute_matrix[item, :]] * 960
+        testdata.append(data_te_list[item])
     testlabel = np.row_stack(testlabel)
     test_attributelabel = np.row_stack(test_attributelabel)
     testdata = np.row_stack(testdata)
