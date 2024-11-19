@@ -38,7 +38,7 @@ def feature_generation_and_diagnosis(add_quantity,test_x,test_y,autoencoder,gene
 
     for j in range(3):
 
-      i=480*j
+      i=960*j
 
       attribute_vector=test_y[i]
 
@@ -57,7 +57,7 @@ def feature_generation_and_diagnosis(add_quantity,test_x,test_y,autoencoder,gene
       Generated_feature.append(generated_feature)
 
       labels_train = np.full((add_quantity, 1), j)
-      labels_test = np.full((480, 1), j)
+      labels_test = np.full((960, 1), j)
 
       Labels_train.append(labels_train)
       Labels_test.append(labels_test)
