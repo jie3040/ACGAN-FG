@@ -1,7 +1,14 @@
 
 import pandas as pd
 import numpy as np
+from sklearn import preprocessing
 
+def scalar_stand(Train_X, Test_X):
+    scalar_train = preprocessing.StandardScaler().fit(Train_X)
+    Train_X = scalar_train.transform(Train_X)
+    Test_X = scalar_train.transform(Test_X)
+    return Train_X, Test_X
+   
 def read_dat_file(file_path):
    
     try:
@@ -105,6 +112,7 @@ def creat_dataset(test_index = [1, 6, 14]):
     testlabel = np.row_stack(testlabel)
     test_attributelabel = np.row_stack(test_attributelabel)
     testdata = np.row_stack(testdata)
+    traindata,testdata = scalar_stand(traindata,testdata)
 
     return traindata, trainlabel, train_attributelabel, \
            testdata, testlabel, test_attributelabel, \
