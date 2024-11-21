@@ -112,7 +112,6 @@ def creat_dataset(test_index = [1, 6, 14]):
     testlabel = np.row_stack(testlabel)
     test_attributelabel = np.row_stack(test_attributelabel)
     testdata = np.row_stack(testdata)
-    traindata,testdata = scalar_stand(traindata,testdata)
 
     return traindata, trainlabel, train_attributelabel, \
            testdata, testlabel, test_attributelabel, \
