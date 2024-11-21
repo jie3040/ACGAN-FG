@@ -36,7 +36,7 @@ class ACGAN_FG():
         self.num_blocks=3
                
         self.lambda_cla = 10 # range from (5,15)
-        self.lambda_cms = 10 # range from (5,15)
+        self.lambda_cms = 1 # range from (0,15)
         self.lambda_crl = 1 # range from (1,15)
         
         self.mi_weight = 0.001 # range from (0,1)
