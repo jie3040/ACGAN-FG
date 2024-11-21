@@ -36,9 +36,10 @@ class ACGAN_FG():
         self.num_blocks=3
                
         self.lambda_cla = 10 # range from (5,15)
-        self.lambda_cms = 1 # range from (0,15)
-        self.lambda_crl = 1 # range from (1,15)
-        
+        self.lambda_cms = 10 # range from (0,15)
+        self.lambda_crl = 0 # range from (0,15)
+
+        self.bound = False
         self.mi_weight = 0.001 # range from (0,1)
         self.mi_bound = 100 # range from (0.5,2)
                 
@@ -244,10 +245,13 @@ class ACGAN_FG():
         # Original classification loss (binary cross-entropy)
         classification_loss = tf.keras.losses.binary_crossentropy(
                 y_true, pred_attribute)
-            
+        
+        mi_penalty=0    
         # MI penalty
-        mi_penalty = self.mi_penalty_loss(
-            current_batch_features, hidden_output)
+        if self.bound == True:    
+        # MI penalty
+          mi_penalty = self.mi_penalty_loss(
+              current_batch_features, hidden_output)
             
          # Combined loss
         total_loss = classification_loss + self.mi_weight * mi_penalty
