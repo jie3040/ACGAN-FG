@@ -269,9 +269,7 @@ class ACGAN_FG():
       comparison_loss_unsimi=tf.keras.losses.binary_crossentropy(
                 unsimilar_truth, predicted_similarity_unsimi)
       
-      unsimi_weight = tf.sqrt(tf.reduce_sum(tf.square(tf.cast(similar_attribute, tf.float32) - tf.cast(unsimilar_attribute, tf.float32))))
-      
-      total_loss = comparison_loss_simi + unsimi_weight * comparison_loss_unsimi
+      total_loss = comparison_loss_simi + comparison_loss_unsimi
       
       return total_loss     
     
