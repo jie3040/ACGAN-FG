@@ -326,7 +326,7 @@ class ACGAN_FG():
           self.d.trainable = False
           self.g.trainable = False
           
-          with tf.GradientTape(persistent=True) as tape_auto:
+          with tf.GradientTape() as tape_auto:
             feature_auto, output_sample_auto=self.autoencoder(train_data)
             autoencoder_loss=mean_squared_error(train_data,output_sample_auto)
             average_autoencoder_loss = tf.reduce_mean(autoencoder_loss)  
@@ -341,7 +341,7 @@ class ACGAN_FG():
           self.d.trainable = False
           self.g.trainable = False
           
-          with tf.GradientTape(persistent=True) as tape_c:
+          with tf.GradientTape() as tape_c:
             feature_c, output_sample_c=self.autoencoder(train_data)
             hidden_ouput_c,predict_attribute_c=self.c(feature_c)
             c_loss=self.classification_loss(feature_c,train_attribute_label, hidden_ouput_c, predict_attribute_c)
@@ -368,7 +368,7 @@ class ACGAN_FG():
           selected_train_data_other_domain= new_train_data[random_indices]
           selected_train_attribute_other_domain= new_train_attribute_label[random_indices]
                     
-          with tf.GradientTape(persistent=True) as tape_m:
+          with tf.GradientTape() as tape_m:
             train_feature, train_output_sample=self.autoencoder(train_data)
             shuffle_train_feature, shuffle_train_output_sample=self.autoencoder(shuffle_train_data)
             selected_train_feature, selected_train_output_sample=self.autoencoder(selected_train_data_other_domain)
@@ -430,7 +430,7 @@ class ACGAN_FG():
           heterogeneous_attributes = [new_train_attribute_label[indices] for indices in all_indices]
                    
           
-          with tf.GradientTape(persistent=True) as tape_g:
+          with tf.GradientTape() as tape_g:
             
             Fake_feature_g=self.g([noise_g,train_attribute_label])
             Fake_validity_g=self.d([Fake_feature_g,train_attribute_label])
