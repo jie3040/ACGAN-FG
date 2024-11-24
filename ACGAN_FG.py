@@ -32,9 +32,10 @@ class Zero_shot():
         self.num_blocks=3
         self.crl = False
 
-        self.lambda_cla = 10
-        self.lambda_cms = 10
-        self.lambda_crl = 0.01
+        self.lambda_adv = 1
+        self.lambda_class = 10
+        self.lambda_silimar = 10
+        self.lambda_unsilimar = 10
         
         self.bound = False
         self.mi_weight = 0.001
@@ -749,7 +750,7 @@ class Zero_shot():
                        g_loss,                                                                                                              
                        elapsed_time))
         
-            if epoch % 1 == 0:
+            if epoch % 10 == 0:
                        
                 accuracy_lsvm,accuracy_nrf,accuracy_pnb,accuracy_mlp=feature_generation_and_diagnosis(2000,testdata,test_attributelabel,gan.autoencoder,gan.g, gan.c)              
 
@@ -759,17 +760,12 @@ class Zero_shot():
                 accuracy_list_1.append(accuracy_lsvm) 
                 accuracy_list_2.append(accuracy_nrf) 
                 accuracy_list_3.append(accuracy_pnb)
-                accuracy_list_4.append(accuracy_mlp)
+                accuracy_list_4.append(accuracy_mlp)            
 
-                max_accuracy_lsvm=max(accuracy_list_1)
-                max_accuracy_nrf=max(accuracy_list_2)
-                max_accuracy_pnb=max(accuracy_list_3)
-                max_accuracy_mlp=max(accuracy_list_4)
-
-                print(max_accuracy_lsvm)
-                print(max_accuracy_nrf)
-                print(max_accuracy_pnb)
-                print(max_accuracy_mlp)
+                print(accuracy_list_1)
+                print(accuracy_list_2)
+                print(accuracy_list_3)
+                print(accuracy_list_4)
 
       
         
