@@ -18,3 +18,4 @@ The codes was tested with tensorflow 2.10.0, CUDA driver 12.7, CUDA toolkit 11.8
 ```
 python ACGAN-FG.py
 ```
+No need to download the whole dataset, we readed and saved in .npz files
