@@ -747,7 +747,7 @@ class Zero_shot():
                      average_c_loss,
                      (m_loss_1+m_loss_2)/2,
                        average_d_loss,
-                       g_loss,                                                                                                              
+                       g_loss[0],                                                                                                              
                        elapsed_time))
         
             if epoch % 10 == 0:
