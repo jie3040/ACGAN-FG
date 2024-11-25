@@ -27,24 +27,24 @@ class Zero_shot():
         self.num_classes=15
         self.latent_dim = 50
         self.noise_shape=(self.latent_dim,1)
-        self.n_critic = 1
-        self.LAMBDA_GP=10
-        self.num_blocks=3
-        self.crl = False
+        self.n_critic = 1  #randomly select from (1,5) 
+        self.LAMBDA_GP=10  #randomly select from (5,15) 
+        self.num_blocks=3  #randomly select from (1,6) 
+        self.crl = False   #self.crl =True
 
-        self.lambda_cla = 10
-        self.lambda_cms = 10
-        self.lambda_crl = 0.01
+        self.lambda_cla = 10 #randomly select from (1,15)
+        self.lambda_cms = 10 #randomly select from (1,15)
+        self.lambda_crl = 0.01 #randomly select from (0,3)
         
-        self.bound = False
-        self.mi_weight = 0.001
-        self.mi_bound = 100
+        self.bound = False #self.bound =True
+        self.mi_weight = 0.001 #randomly select from (0,1)
+        self.mi_bound = 100 #randomly select from (10,100)
         
-        self.autoencoder_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
-        self.d_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
-        self.g_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)        
-        self.c_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
-        self.m_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
+        self.autoencoder_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001) # range from (1e-2,1e-4)
+        self.d_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001) # range from (1e-2,1e-4)
+        self.g_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)  # range from (1e-2,1e-4)
+        self.c_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)# range from (1e-2,1e-4)
+        self.m_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)# range from (1e-2,1e-4)
         
         self.autoencoder= self.build_autoencoder()
         self.d = self.build_discriminator()
@@ -709,7 +709,7 @@ class Zero_shot():
                        average_g_loss,                                                                                                              
                        elapsed_time))
         
-            if epoch % 1 == 0:
+            if epoch % 10 == 0:
                        
                 accuracy_lsvm,accuracy_nrf,accuracy_pnb,accuracy_mlp=feature_generation_and_diagnosis(2000,testdata,test_attributelabel,gan.autoencoder,gan.g, gan.c)              
 
@@ -721,18 +721,13 @@ class Zero_shot():
                 accuracy_list_3.append(accuracy_pnb)
                 accuracy_list_4.append(accuracy_mlp)
 
-                max_accuracy_lsvm=max(accuracy_list_1)
-                max_accuracy_nrf=max(accuracy_list_2)
-                max_accuracy_pnb=max(accuracy_list_3)
-                max_accuracy_mlp=max(accuracy_list_4)
-
-                print(max_accuracy_lsvm)
-                print(max_accuracy_nrf)
-                print(max_accuracy_pnb)
-                print(max_accuracy_mlp)
+                print(accuracy_list_1)
+                print(accuracy_list_2)
+                print(accuracy_list_3)
+                print(accuracy_list_4)
 
       
         
 if __name__ == '__main__':
     gan = Zero_shot()
-    gan.train(epochs=1000, batch_size=120)
+    gan.train(epochs=2000, batch_size=120)
