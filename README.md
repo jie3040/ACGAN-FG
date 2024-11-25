@@ -1,4 +1,4 @@
-# ACGAN-FG
+# ACGAN-FG(Ongoing update)
 The implementation of ACGAN-FG for zero-shot fault diagnosis.  
 
 # Dataset
