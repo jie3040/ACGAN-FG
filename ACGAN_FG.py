@@ -721,7 +721,7 @@ class Zero_shot():
                 print("[Epoch %d/%d] [Accuracy_lsvm: %f] [Accuracy_nrf: %f] [Accuracy_pnb: %f][Accuracy_mlp: %f]"\
                   %(epoch, epochs,max(accuracy_list_1),max(accuracy_list_2),max(accuracy_list_3),max(accuracy_list_4)))
             
-        print('finished! best_acc:{:.4f}'.format(max([max(accuracy_list_1),max(accuracy_list_2),max(accuracy_list_3),max(accuracy_list_4)]))
+        print('finished! best_acc:{:.4f}'.format(max([max(accuracy_list_1),max(accuracy_list_2),max(accuracy_list_3),max(accuracy_list_4)])))
                 
 
       
