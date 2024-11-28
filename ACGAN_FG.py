@@ -709,22 +709,20 @@ class Zero_shot():
                        average_g_loss,                                                                                                              
                        elapsed_time))
         
-            if epoch % 10 == 0:
+            if epoch % 1 == 0:
                        
-                accuracy_lsvm,accuracy_nrf,accuracy_pnb,accuracy_mlp=feature_generation_and_diagnosis(2000,testdata,test_attributelabel,gan.autoencoder,gan.g, gan.c)              
+                accuracy_lsvm,accuracy_nrf,accuracy_pnb,accuracy_mlp=feature_generation_and_diagnosis(2000,testdata,test_attributelabel,gan.autoencoder,gan.g, gan.c)  
 
-                print("[Epoch %d/%d] [Accuracy_lsvm: %f] [Accuracy_nrf: %f] [Accuracy_pnb: %f][Accuracy_mlp: %f]"\
-                  %(epoch, epochs,accuracy_lsvm,accuracy_nrf,accuracy_pnb,accuracy_mlp))
-            
                 accuracy_list_1.append(accuracy_lsvm) 
                 accuracy_list_2.append(accuracy_nrf) 
                 accuracy_list_3.append(accuracy_pnb)
                 accuracy_list_4.append(accuracy_mlp)
 
-                print(accuracy_list_1)
-                print(accuracy_list_2)
-                print(accuracy_list_3)
-                print(accuracy_list_4)
+                print("[Epoch %d/%d] [Accuracy_lsvm: %f] [Accuracy_nrf: %f] [Accuracy_pnb: %f][Accuracy_mlp: %f]"\
+                  %(epoch, epochs,max(accuracy_list_1),max(accuracy_list_2),max(accuracy_list_3),max(accuracy_list_4)))
+            
+        print('finished! best_acc:{:.4f}'.format(max([max(accuracy_list_1),max(accuracy_list_2),max(accuracy_list_3),max(accuracy_list_4)]))
+                
 
       
         
