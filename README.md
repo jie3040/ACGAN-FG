@@ -1,5 +1,8 @@
-# ACGAN-FG(Ongoing update)
+# ACGAN-FG
 The implementation of ACGAN-FG for zero-shot fault diagnosis.  
+
+# Paper
+W. Liao, L. Wu, S. Xu and S. Fujimura, "A Novel Zero-Shot Learning Method With Feature Generation for Intelligent Fault Diagnosis," in IEEE Transactions on Industrial Informatics, vol. 21, no. 4, pp. 3386-3395, April 2025, doi: 10.1109/TII.2025.3526478.
 
 # Dataset
 This example is based on the Tennessee-Eastman Process (TEP)  dataset.
