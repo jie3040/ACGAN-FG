@@ -7,7 +7,7 @@ from tensorflow.keras.models import Sequential, Model
 import datetime
 import read_data
 from tensorflow.keras.losses import mean_squared_error
-from new_zero_shot_13_1_evaluation import feature_generation_and_diagnosis
+from test import feature_generation_and_diagnosis
 
 
 class RandomWeightedAverage(Concatenate):
